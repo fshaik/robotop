@@ -314,6 +314,10 @@ function receivedMessage(event) {
         sendAccountLinking(senderID);
         break;
 
+      case 'hey':
+        sendHiSanam(senderID);
+      break;
+
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -801,6 +805,20 @@ function sendAccountLinking(recipientId) {
       }
     }
   };  
+
+  callSendAPI(messageData);
+}
+
+function sendHiSanam(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "Hi Sanam! ;)",
+      metadata: "DEVELOPER_DEFINED_METADATA"
+    }
+  };
 
   callSendAPI(messageData);
 }
