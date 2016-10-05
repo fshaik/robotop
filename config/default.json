@@ -1,6 +1,6 @@
 {
     "appSecret": "619f60389c8e8beb336aa0d956fdaf53",
-    "pageAccessToken": "",
+    "pageAccessToken": "test",
     "validationToken": "password",
     "serverURL": "https://robotopapp.herokuapp.com/"
 }
