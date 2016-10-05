@@ -318,6 +318,10 @@ function receivedMessage(event) {
         sendHiSanam(senderID);
       break;
 
+      case 'Hey':
+        sendHiSanam(senderID);
+      break;
+
       default:
         sendTextMessage(senderID, messageText);
     }
