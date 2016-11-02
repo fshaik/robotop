@@ -266,7 +266,7 @@ function receivedMessage(event) {
 
       case 'is the l train running':
         //somecode
-        sendTextMessage(recipientId, "The Fucking Status")
+        sendTextMessage(senderID, "The Fucking Status")
         break;
 
       case 'image':
