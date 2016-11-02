@@ -276,6 +276,7 @@ function receivedMessage(event) {
             currentStatus: "#content > div.titleStripe > div > div:nth-child(1) > div.col-xs-12.col-sm-7.col-md-7.col-lg-7 > div > div > h2"
         }).then(page => {
             console.log(page);
+            sendTextMessage(senderID, page.currentStatus);
         });
 
 
