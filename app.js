@@ -18,6 +18,8 @@ const
   https = require('https'),  
   request = require('request');
 
+const scrapeIt = require("scrape-it");
+
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
@@ -266,7 +268,17 @@ function receivedMessage(event) {
 
       case 'is the l train running':
         //somecode
-        sendTextMessage(senderID, "The Fucking Status")
+
+        sendTextMessage(senderID, "The Fucking Status");
+        scrapeIt("http://subwaystats.com/status-L-train", {
+            title: "title",
+            desc: ".header h2",
+            currentStatus: "#content > div.titleStripe > div > div:nth-child(1) > div.col-xs-12.col-sm-7.col-md-7.col-lg-7 > div > div > h2"
+        }).then(page => {
+            console.log(page);
+        });
+
+
         break;
 
       case 'image':
