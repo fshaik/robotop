@@ -265,7 +265,8 @@ function receivedMessage(event) {
     switch (messageText) {
 
       case 'is the l train running':
-        sendImageMessage(senderID);
+        //somecode
+        sendTextMessage(recipientId, "The Fucking Status")
         break;
 
       case 'image':
@@ -552,6 +553,8 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
+
+
 
 /*
  * Send a button message using the Send API.
