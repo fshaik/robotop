@@ -263,6 +263,11 @@ function receivedMessage(event) {
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     switch (messageText) {
+
+      case 'is the l train running':
+        sendImageMessage(senderID);
+        break;
+
       case 'image':
         sendImageMessage(senderID);
         break;
