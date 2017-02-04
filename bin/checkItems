@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
+config = require('config')
+
 console.log("Time")
-sendTextMessage(410226259101074, "Goood maorning")
+
+
+const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
+  (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
+  config.get('pageAccessToken');
+
+//sendTextMessage(410226259101074, "Goood maorning")
 
