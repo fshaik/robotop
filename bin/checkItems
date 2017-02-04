@@ -2,7 +2,8 @@
 
 config = require('config')
 request = require('request');
-console.log("Begining Task")
+var Forecast = require('forecast');
+
 
 
 const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
@@ -50,4 +51,22 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
-sendTextMessage(1261694303861901, "Goood maorning")
+var forecast = new Forecast({
+	service: 'darksky',
+	key: '6ee8cd767b474ad54e05898fb5d5e7ac',
+	units: 'fahrenheit',
+	cache: true,
+	ttl: {
+		minutes: 27,
+		seconds: 45
+	}
+});
+
+forecast.get([-33.8683, 151.2086], function(err, weather) {
+  if(err) return console.dir(err);
+  console.dir(weather);
+  sendTextMessage(1261694303861901, "Goood maorning")
+  
+});
+
+
