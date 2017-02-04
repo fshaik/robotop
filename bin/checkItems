@@ -50,4 +50,4 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
-sendTextMessage(410226259101074, "Goood maorning")
+sendTextMessage(1261694303861901, "Goood maorning")
