@@ -5,7 +5,6 @@ request = require('request');
 var Forecast = require('forecast');
 
 
-
 const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
   (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
   config.get('pageAccessToken');
@@ -66,7 +65,7 @@ forecast.get([-33.8683, 151.2086], function(err, weather) {
   if(err) return console.dir(err);
   console.dir(weather);
   sendTextMessage(1261694303861901, "Goood maorning")
-  
+
 });
 
 
