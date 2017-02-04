@@ -4,7 +4,7 @@
  *
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
- *
+ *s
  */
 
 /* jshint node: true, devel: true */
@@ -16,7 +16,8 @@ const
   crypto = require('crypto'),
   express = require('express'),
   https = require('https'),  
-  request = require('request');
+  request = require('request'),
+  forecast = require('forecast');
 
 const scrapeIt = require("scrape-it");
 

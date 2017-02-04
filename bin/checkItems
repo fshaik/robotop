@@ -2,7 +2,7 @@
 
 config = require('config')
 request = require('request');
-var Forecast = require('forecast');
+Forecast = require('forecast');
 
 
 const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
