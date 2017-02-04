@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 config = require('config')
-
+request = require('request');
 console.log("Begining Task")
 
 
