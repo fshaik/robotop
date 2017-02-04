@@ -9,5 +9,7 @@ const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
   (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
   config.get('pageAccessToken');
 
+  console.log(PAGE_ACCESS_TOKEN);
+
 //sendTextMessage(410226259101074, "Goood maorning")
 
