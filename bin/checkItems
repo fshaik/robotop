@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
 console.log("Time")
+sendTextMessage(410226259101074, "Goood maorning")
+
