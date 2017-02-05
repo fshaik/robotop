@@ -4,12 +4,13 @@ config = require('config')
 request = require('request');
 Forecast = require('forecast');
 
+var nyc_coor = [40.741895,-73.989308];
+
+const winterS3Bucket = "https://s3-us-west-2.amazonaws.com/winter-styles-20";
 
 const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
   (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
   config.get('pageAccessToken');
-
-  console.log(PAGE_ACCESS_TOKEN);
 
 function callSendAPI(messageData) {
   request({
@@ -50,6 +51,24 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
+function sendImageMessage(recipientId, imageurl) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "image",
+        payload: {
+          url: imageurl
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 var forecast = new Forecast({
 	service: 'darksky',
 	key: '6ee8cd767b474ad54e05898fb5d5e7ac',
@@ -61,11 +80,70 @@ var forecast = new Forecast({
 	}
 });
 
-forecast.get([-33.8683, 151.2086], function(err, weather) {
+forecast.get(nyc_coor, function(err, weather) {
   if(err) return console.dir(err);
-  console.dir(weather);
-  sendTextMessage(1261694303861901, "Goood maorning")
+
+  var today = weather.daily.data[0];
+  var date = new Date(today.time);
+  var apparentTemperatureMin = today.apparentTemperatureMin;
+  var precipProbability = today.precipProbability;
+  var summary = today.icon;
+  var message = "";
+  var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+
+  sendTextMessage(1261694303861901, message.concat("The weather in ", weather.timezone)
+   .concat(" For ", days[date.getDay()])
+   .concat(" is ", summary).concat(" It will feel like ", apparentTemperatureMin)
+   .concat(" with ", precipProbability, " chance of precipitation")
+   );
+
+
+  if (apparentTemperatureMin < 30) {
+  	sendWinterStyle(20);
+  	 
+  }
+
+  else if(apparentTemperatureMin < 40) {
+
+  }
+
+  else if (apparentTemperatureMin < 50) {
+
+
+  }
+
+  else {
+
+  	sendTextMessage(1261694303861901, "It's Warm dude! update me")
+  }
 
 });
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function sendWinterStyle (temp) {
+
+	switch (temp) {
+		case 20:
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("/20/",getRandomInt(1,4),".jpg"));
+		case 30:
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("/30/",getRandomInt(1,4),".jpg"));
+		case 40:
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("40/",getRandomInt(1,4),".jpg"));
+
+		default:
+			var imageurl = "http://ichef-1.bbci.co.uk/news/320/cpsprodpb/025B/production/_85730600_monkey2.jpg";
+	}
+
+
+
+
+}
+
+
+
 
 
