@@ -5,6 +5,11 @@ request = require('request');
 Forecast = require('forecast');
 
 var nyc_coor = [40.741895,-73.989308];
+var sf_coor = [37.773972, -122.431297];
+
+const coor = sf_coor;
+
+
 
 const winterS3Bucket = "https://s3-us-west-2.amazonaws.com/winter-styles-20";
 
@@ -80,7 +85,7 @@ var forecast = new Forecast({
 	}
 });
 
-forecast.get(nyc_coor, function(err, weather) {
+forecast.get(coor, function(err, weather) {
   if(err) return console.dir(err);
 
   var today = weather.daily.data[0];
@@ -93,7 +98,7 @@ forecast.get(nyc_coor, function(err, weather) {
 
 
   sendTextMessage(1261694303861901, message.concat("The weather in ", weather.timezone)
-   .concat(" For ", days[date.getDay()])
+   .concat(" For ", date.getDay())
    .concat(" is ", summary).concat(" It will feel like ", apparentTemperatureMin)
    .concat(" with ", precipProbability, " chance of precipitation")
    );
@@ -105,10 +110,12 @@ forecast.get(nyc_coor, function(err, weather) {
   }
 
   else if(apparentTemperatureMin < 40) {
+  	sendWinterStyle(30)
 
   }
 
   else if (apparentTemperatureMin < 50) {
+  	sendWinterStyle(40)
 
 
   }
