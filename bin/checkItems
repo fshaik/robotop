@@ -9,8 +9,6 @@ var sf_coor = [37.773972, -122.431297];
 
 const coor = nyc_coor;
 
-
-
 const winterS3Bucket = "https://s3-us-west-2.amazonaws.com/winter-styles-20";
 
 const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
@@ -97,8 +95,8 @@ forecast.get(coor, function(err, weather) {
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-  sendTextMessage(1261694303861901, message.concat("The weather in ", weather.timezone)
-   .concat(" For ", date.getDay())
+  sendTextMessage(1261694303861901, message.concat("Location: ", weather.timezone)
+   .concat(" for day", date.getDay())
    .concat(" is ", summary).concat(" It will feel like ", apparentTemperatureMin)
    .concat(" with ", precipProbability, " chance of precipitation")
    );
