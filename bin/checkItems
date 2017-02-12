@@ -97,7 +97,7 @@ forecast.get(coor, function(err, weather) {
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-  sendTextMessage(1223764231070887, message.concat("The weather in ", weather.timezone)
+  sendTextMessage(1261694303861901, message.concat("The weather in ", weather.timezone)
    .concat(" For ", date.getDay())
    .concat(" is ", summary).concat(" It will feel like ", apparentTemperatureMin)
    .concat(" with ", precipProbability, " chance of precipitation")
@@ -105,7 +105,7 @@ forecast.get(coor, function(err, weather) {
 
 
   if (apparentTemperatureMin < 30) {
-  	sendWinterStyle(30);
+  	sendWinterStyle(20);
   	 
   }
 
@@ -122,7 +122,7 @@ forecast.get(coor, function(err, weather) {
 
   else {
 
-  	sendTextMessage(1223764231070887, "It's Warm dude! update me")
+  	sendTextMessage(1261694303861901, "It's Warm dude! update me")
   }
 
 });
@@ -135,11 +135,11 @@ function sendWinterStyle (temp) {
 
 	switch (temp) {
 		case 20:
-			sendImageMessage(1223764231070887, winterS3Bucket.concat("/20/",getRandomInt(1,4),".jpg"));
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("/20/",getRandomInt(1,4),".jpg"));
 		case 30:
-			sendImageMessage(1223764231070887, winterS3Bucket.concat("/30/",getRandomInt(1,4),".jpg"));
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("/30/",getRandomInt(1,4),".jpg"));
 		case 40:
-			sendImageMessage(1223764231070887, winterS3Bucket.concat("40/",getRandomInt(1,4),".jpg"));
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("40/",getRandomInt(1,4),".jpg"));
 
 		default:
 			var imageurl = "http://ichef-1.bbci.co.uk/news/320/cpsprodpb/025B/production/_85730600_monkey2.jpg";
