@@ -105,7 +105,7 @@ forecast.get(coor, function(err, weather) {
 
 
   if (apparentTemperatureMin < 30) {
-  	sendWinterStyle(20);
+  	sendWinterStyle(30);
   	 
   }
 
@@ -134,12 +134,18 @@ function getRandomInt(min, max) {
 function sendWinterStyle (temp) {
 
 	switch (temp) {
+
 		case 20:
 			sendImageMessage(1261694303861901, winterS3Bucket.concat("/20/",getRandomInt(1,4),".jpg"));
+			break;
+
 		case 30:
 			sendImageMessage(1261694303861901, winterS3Bucket.concat("/30/",getRandomInt(1,4),".jpg"));
+			break;
+
 		case 40:
-			sendImageMessage(1261694303861901, winterS3Bucket.concat("40/",getRandomInt(1,4),".jpg"));
+			sendImageMessage(1261694303861901, winterS3Bucket.concat("/40/",getRandomInt(1,4),".jpg"));
+			break;
 
 		default:
 			var imageurl = "http://ichef-1.bbci.co.uk/news/320/cpsprodpb/025B/production/_85730600_monkey2.jpg";
