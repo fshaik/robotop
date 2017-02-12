@@ -15,8 +15,6 @@ const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
   (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
   config.get('pageAccessToken');
 
-  console.log(PAGE_ACCESS_TOKEN);
-
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
@@ -98,9 +96,10 @@ forecast.get(coor, function(err, weather) {
 
 
   sendTextMessage(1261694303861901, message.concat("Location: ", weather.timezone)
-   .concat(" for day", date.getDay())
-   .concat(" is ", summary).concat(" It will feel like ", apparentTemperatureMin)
-   .concat(" with ", precipProbability, " chance of precipitation")
+   .concat("\n Day: ", date.getDay())
+   .concat("\n Summary: ", summary)
+   .concat("\n Apparent Temperature: ", apparentTemperatureMin)
+   .concat("\n Precipitation: ", precipProbability)
    );
 
 
