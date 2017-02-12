@@ -7,7 +7,7 @@ Forecast = require('forecast');
 var nyc_coor = [40.741895,-73.989308];
 var sf_coor = [37.773972, -122.431297];
 
-const coor = sf_coor;
+const coor = nyc_coor;
 
 
 
@@ -105,7 +105,7 @@ forecast.get(coor, function(err, weather) {
 
 
   if (apparentTemperatureMin < 30) {
-  	sendWinterStyle(20);
+  	sendWinterStyle(30);
   	 
   }
 
