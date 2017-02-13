@@ -95,11 +95,12 @@ forecast.get(coor, function(err, weather) {
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-  sendTextMessage(1261694303861901, message.concat("Location: ", weather.timezone)
-   .concat("\n Day: ", date.getDay())
-   .concat("\n Summary: ", summary)
-   .concat("\n Apparent Temperature: ", apparentTemperatureMin)
-   .concat("\n Precipitation: ", precipProbability)
+  sendTextMessage(1261694303861901, message
+  	.concat("Location: ", weather.timezone)
+  	.concat("\nDay: ", date.getDay())
+  	.concat("\nSummary: ", summary)
+  	.concat("\nApparent Temperature: ", apparentTemperatureMin)
+  	.concat("\nPrecipitation: ", precipProbability)
    );
 
 

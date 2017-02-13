@@ -17,7 +17,9 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request'),
-  forecast = require('forecast');
+  forecast = require('forecast'),
+  mysql = require('mysql'),
+  mongodb = require('mongodb');
 
 const scrapeIt = require("scrape-it");
 
@@ -26,6 +28,12 @@ app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
+
+var uri = 'mongodb://heroku_tnlh9d9h:1dfism89bbluj1bne99g3ke7k7@ds151059.mlab.com:51059/heroku_tnlh9d9h';
+mongoose.connect(uri);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 /*
  * Be sure to setup your config values before running this code. You can 
@@ -58,6 +66,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
   process.exit(1);
 }
+
 
 app.get('/', function(req, res) {
  
@@ -880,12 +889,17 @@ function callSendAPI(messageData) {
   });  
 }
 
+require('./routes')(app);
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid 
 // certificate authority.
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+db.once('open', function callback () {
+
+  app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+  });
+
+}
 
 module.exports = app;
 
