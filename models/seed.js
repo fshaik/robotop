@@ -12,7 +12,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', function callback () {
-
+/*
   // Create seed data
   var wooster = new Outfit({
     temperature: 20,
@@ -31,10 +31,11 @@ db.once('open', function callback () {
   /*
    * First we'll add a few songs. Nothing is required to create the 
    * songs collection; it is created automatically when we insert.
-   */
+
   var list = [wooster, woostertwo]
   Outfit.insertMany(list);
 
+*/
   Outfit.find({ sunglasses: true }).sort({ temperature: 1}).exec(function (err, docs){
 
     if(err) throw err;
