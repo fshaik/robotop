@@ -2,6 +2,7 @@
 
 // grab the nerd model we just created
 var Outfit = require('./models/Outfit');
+var request = require('request');
 
 module.exports = function(app) {
 
