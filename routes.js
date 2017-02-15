@@ -1,4 +1,15 @@
  // app/routes.js
+
+ const 
+  bodyParser = require('body-parser'),
+  config = require('config'),
+  crypto = require('crypto'),
+  express = require('express'),
+  https = require('https'),  
+  forecast = require('forecast'),
+  mysql = require('mysql'),
+  mongoose = require('mongoose');
+  
 // App Secret can be retrieved from the App Dashboard
 const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ? 
   process.env.MESSENGER_APP_SECRET :

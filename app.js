@@ -16,13 +16,9 @@ const
   crypto = require('crypto'),
   express = require('express'),
   https = require('https'),  
-  request = require('request'),
   forecast = require('forecast'),
   mysql = require('mysql'),
   mongoose = require('mongoose');
-
-const scrapeIt = require("scrape-it");
-
 
 /*
  * Be sure to setup your config values before running this code. You can 
