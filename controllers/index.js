@@ -1,4 +1,4 @@
 module.exports = {
-  receivedMessage: require('./receivedMessage'),
-  sendMessage: require('./sendMessage')
+  receivedMessage: require('./received'),
+  sendMessage: require('./send')
 };

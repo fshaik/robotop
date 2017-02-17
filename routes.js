@@ -89,17 +89,17 @@ module.exports = function(app) {
           pageEntry.messaging.forEach(function(messagingEvent) {
             console.log("OBJECT: " , messagingEvent);
             if (messagingEvent.optin) {
-              receivedAuthentication(messagingEvent);
+              controllers.recieved.receivedAuthentication(messagingEvent);
             } else if (messagingEvent.message) {
-              controllers.receivedMessage(messagingEvent);
+              controllers.recieved.receivedMessage(messagingEvent);
             } else if (messagingEvent.delivery) {
-              receivedDeliveryConfirmation(messagingEvent);
+              controllers.recieved.receivedDeliveryConfirmation(messagingEvent);
             } else if (messagingEvent.postback) {
-              receivedPostback(messagingEvent);
+              controllers.recieved.receivedPostback(messagingEvent);
             } else if (messagingEvent.read) {
-              receivedMessageRead(messagingEvent);
+              controllers.recieved.receivedMessageRead(messagingEvent);
             } else if (messagingEvent.account_linking) {
-              receivedAccountLink(messagingEvent);
+              controllers.recieved.receivedAccountLink(messagingEvent);
             } else {
               console.log("Webhook received unknown messagingEvent: ", messagingEvent);
             }
