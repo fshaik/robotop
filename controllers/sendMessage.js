@@ -181,7 +181,7 @@ module.exports = {
    * Send a button message using the Send API.
    *
    */
-  function sendButtonMessage(recipientId) {
+  sendButtonMessage: function (recipientId) {
     var messageData = {
       recipient: {
         id: recipientId
