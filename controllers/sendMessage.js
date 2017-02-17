@@ -1,5 +1,7 @@
 const config = require('config');
 
+const request = require('request');
+
 // App Secret can be retrieved from the App Dashboard
 const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ? 
   process.env.MESSENGER_APP_SECRET :
