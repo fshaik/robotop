@@ -166,7 +166,7 @@ module.exports = function(app) {
 
       // When an authentication is received, we'll send a message back to the sender
       // to let them know it was successful.
-      sendTextMessage(senderID, "Authentication successful");
+      sendMessage.sendTextMessage(senderID, "Authentication successful");
     }
 
 
@@ -217,7 +217,7 @@ module.exports = function(app) {
 
       // When a postback is called, we'll send a message back to the sender to 
       // let them know it was successful
-      sendTextMessage(senderID, "Postback called");
+      sendMessage.sendTextMessage(senderID, "Postback called");
     }
 
     /*
@@ -259,97 +259,6 @@ module.exports = function(app) {
     }
 
 
-    //All send functions
-
-
-
-    /*
-     * Send a Gif using the Send API.
-     *
-     */
-    function sendGifMessage(recipientId) {
-      var messageData = {
-        recipient: {
-          id: recipientId
-        },
-        message: {
-          attachment: {
-            type: "image",
-            payload: {
-              url: SERVER_URL + "/assets/instagram_logo.gif"
-            }
-          }
-        }
-      };
-
-      callSendAPI(messageData);
-    }
-
-    /*
-     * Send audio using the Send API.
-     *
-     */
-    function sendAudioMessage(recipientId) {
-      var messageData = {
-        recipient: {
-          id: recipientId
-        },
-        message: {
-          attachment: {
-            type: "audio",
-            payload: {
-              url: SERVER_URL + "/assets/sample.mp3"
-            }
-          }
-        }
-      };
-
-      callSendAPI(messageData);
-    }
-
-    /*
-     * Send a video using the Send API.
-     *
-     */
-    function sendVideoMessage(recipientId) {
-      var messageData = {
-        recipient: {
-          id: recipientId
-        },
-        message: {
-          attachment: {
-            type: "video",
-            payload: {
-              url: SERVER_URL + "/assets/allofus480.mov"
-            }
-          }
-        }
-      };
-
-      callSendAPI(messageData);
-    }
-
-    /*
-     * Send a video using the Send API.
-     *
-     */
-    function sendFileMessage(recipientId) {
-      var messageData = {
-        recipient: {
-          id: recipientId
-        },
-        message: {
-          attachment: {
-            type: "file",
-            payload: {
-              url: SERVER_URL + "/assets/test.txt"
-            }
-          }
-        }
-      };
-
-      callSendAPI(messageData);
-    }
 
     /*
      * Send a text message using the Send API.
