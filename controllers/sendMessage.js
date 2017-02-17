@@ -1,3 +1,5 @@
+const config = require('config');
+
 // App Secret can be retrieved from the App Dashboard
 const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ? 
   process.env.MESSENGER_APP_SECRET :
@@ -23,6 +25,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
   process.exit(1);
 }
+
 function callSendAPI(messageData) {
       request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
