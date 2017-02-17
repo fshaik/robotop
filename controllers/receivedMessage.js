@@ -42,24 +42,8 @@ module.exports = function receivedMessage(event) {
     // the text we received.
     switch (messageText) {
 
-      case 'is the l train running':
-        //somecode
-
-        sendTextMessage(senderID, "The Fucking Status");
-        scrapeIt("http://subwaystats.com/status-L-train", {
-            title: "title",
-            desc: ".header h2",
-            currentStatus: "#content > div.titleStripe > div > div:nth-child(1) > div.col-xs-12.col-sm-7.col-md-7.col-lg-7 > div > div > h2"
-        }).then(page => {
-            console.log(page);
-            sendTextMessage(senderID, page.currentStatus);
-        });
-
-
-        break;
-
       case 'image':
-        sendImageMessage(senderID);
+        sendMessage.sendImageMessage(senderID);
         break;
 
       case 'gif':
@@ -111,9 +95,9 @@ module.exports = function receivedMessage(event) {
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+        sendMessage.sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    sendMessage.sendTextMessage(senderID, "Message with attachment received");
   }
 };
