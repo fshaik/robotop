@@ -88,7 +88,9 @@ forecast.get(coor, function(err, weather) {
   if(err) return console.dir(err);
 
   var today = weather.daily.data[0];
-  var date = new Date(today.time);
+  var date = new Date(0);
+  date.setUTCSeconds(today.time);
+
   var apparentTemperatureMin = today.apparentTemperatureMin;
   var precipProbability = today.precipProbability;
   var summary = today.icon;
@@ -98,7 +100,7 @@ forecast.get(coor, function(err, weather) {
 
   sendTextMessage(me, message
   	.concat("Location: ", weather.timezone)
-  	.concat("\nDay: ", date)
+  	.concat("\nDay: ", days[date.getDay()])
   	.concat("\nSummary: ", summary)
   	.concat("\nApparent Temperature: ", apparentTemperatureMin)
   	.concat("\nPrecipitation: ", precipProbability)

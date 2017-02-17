@@ -9,6 +9,7 @@
   forecast = require('forecast'),
   mysql = require('mysql'),
   mongoose = require('mongoose');
+  controllers = require('./controllers/index');
   
 // App Secret can be retrieved from the App Dashboard
 const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ? 
@@ -91,7 +92,7 @@ module.exports = function(app) {
             if (messagingEvent.optin) {
               receivedAuthentication(messagingEvent);
             } else if (messagingEvent.message) {
-              receivedMessage(messagingEvent);
+              controllers.receivedMessage(messagingEvent);
             } else if (messagingEvent.delivery) {
               receivedDeliveryConfirmation(messagingEvent);
             } else if (messagingEvent.postback) {
