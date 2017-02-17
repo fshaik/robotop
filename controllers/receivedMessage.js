@@ -1,3 +1,5 @@
+const sendMessage = require('./sendMessage')
+
 module.exports = function receivedMessage(event) {
 
   var senderID = event.sender.id;
@@ -29,7 +31,7 @@ module.exports = function receivedMessage(event) {
     console.log("Quick reply for message %s with payload %s",
       messageId, quickReplyPayload);
 
-    sendTextMessage(senderID, "Quick reply tapped");
+    sendMessage.sendTextMessage(senderID, "Quick reply tapped");
     return;
   }
 
