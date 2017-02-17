@@ -67,5 +67,114 @@ module.exports = {
       };
 
       callSendAPI(messageData);
-    }
+    },
+    /*
+     * Send an image using the Send API.
+     *
+     */
+  sendImageMessage: function (recipientId) {
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "image",
+            payload: {
+              url: SERVER_URL + "/assets/rift.png"
+            }
+          }
+        }
+      };
+
+      callSendAPI(messageData);
+  },
+
+      /*
+     * Send a Gif using the Send API.
+     *
+     */
+  sendGifMessage: function (recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "image",
+          payload: {
+            url: SERVER_URL + "/assets/instagram_logo.gif"
+          }
+        }
+      }
+    };
+
+    callSendAPI(messageData);
+  },
+
+  /*
+   * Send audio using the Send API.
+   *
+   */
+  sendAudioMessage: function (recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "audio",
+          payload: {
+            url: SERVER_URL + "/assets/sample.mp3"
+          }
+        }
+      }
+    };
+
+    callSendAPI(messageData);
+  },
+
+  /*
+   * Send a video using the Send API.
+   *
+   */
+  sendVideoMessage: function (recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "video",
+          payload: {
+            url: SERVER_URL + "/assets/allofus480.mov"
+          }
+        }
+      }
+    };
+
+    callSendAPI(messageData);
+  },
+
+  /*
+   * Send a video using the Send API.
+   *
+   */
+  sendFileMessage: function (recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "file",
+          payload: {
+            url: SERVER_URL + "/assets/test.txt"
+          }
+        }
+      }
+    };
+
+    callSendAPI(messageData);
+  }
 };

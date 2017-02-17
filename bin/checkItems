@@ -43,38 +43,6 @@ function callSendAPI(messageData) {
   });  
 }
 
-function sendTextMessage(recipientId, messageText) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: messageText,
-      metadata: "DEVELOPER_DEFINED_METADATA"
-    }
-  };
-
-  callSendAPI(messageData);
-}
-
-function sendImageMessage(recipientId, imageurl) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "image",
-        payload: {
-          url: imageurl
-        }
-      }
-    }
-  };
-
-  callSendAPI(messageData);
-}
-
 var forecast = new Forecast({
 	service: 'darksky',
 	key: '6ee8cd767b474ad54e05898fb5d5e7ac',
@@ -127,7 +95,7 @@ forecast.get(coor, function(err, weather) {
 
   else {
 
-  	sendTextMessage(me, "It's Warm dude! update me")
+  	controllers.sendMessage.sendTextMessage(me, "It's Warm dude! update me")
   }
 
 });
@@ -141,15 +109,15 @@ function sendWinterStyle (temp) {
 	switch (temp) {
 
 		case 20:
-			sendImageMessage(me, winterS3Bucket.concat("/20/",getRandomInt(1,4),".jpg"));
+			controllers.sendMessage.sendImageMessage(me, winterS3Bucket.concat("/20/",getRandomInt(1,4),".jpg"));
 			break;
 
 		case 30:
-			sendImageMessage(me, winterS3Bucket.concat("/30/",getRandomInt(1,4),".jpg"));
+			controllers.sendMessage.sendImageMessage(me, winterS3Bucket.concat("/30/",getRandomInt(1,4),".jpg"));
 			break;
 
 		case 40:
-			sendImageMessage(me, winterS3Bucket.concat("/40/",getRandomInt(1,4),".jpg"));
+			controllers.sendMessage.sendImageMessage(me, winterS3Bucket.concat("/40/",getRandomInt(1,4),".jpg"));
 			break;
 
 		default:
