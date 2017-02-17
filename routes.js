@@ -37,7 +37,6 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   process.exit(1);
 }
 
-// grab the nerd model we just created
 var Outfit = require('./models/Outfit');
 var request = require('request');
 

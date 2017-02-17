@@ -160,7 +160,7 @@ module.exports = {
    * Send a video using the Send API.
    *
    */
-  sendFileMessage: function (recipientId) {
+  sendFileMessage: function (recipientId, url) {
     var messageData = {
       recipient: {
         id: recipientId
@@ -169,7 +169,7 @@ module.exports = {
         attachment: {
           type: "file",
           payload: {
-            url: SERVER_URL + "/assets/test.txt"
+            url: url
           }
         }
       }
