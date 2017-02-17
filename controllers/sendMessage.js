@@ -72,7 +72,7 @@ module.exports = {
      * Send an image using the Send API.
      *
      */
-  sendImageMessage: function (recipientId) {
+  sendImageMessage: function (recipientId, url) {
       var messageData = {
         recipient: {
           id: recipientId
@@ -81,7 +81,7 @@ module.exports = {
           attachment: {
             type: "image",
             payload: {
-              url: SERVER_URL + "/assets/rift.png"
+              url: url
             }
           }
         }
@@ -378,6 +378,67 @@ module.exports = {
       },
       sender_action: "mark_seen"
     };
+
+    callSendAPI(messageData);
+  },
+
+    /*
+     * Turn typing indicator on
+     *
+     */
+  sendTypingOn: function (recipientId) {
+    console.log("Turning typing indicator on");
+
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      sender_action: "typing_on"
+    };
+
+    callSendAPI(messageData);
+  },
+
+  /*
+   * Turn typing indicator off
+   *
+   */
+  sendTypingOff: function (recipientId) {
+    console.log("Turning typing indicator off");
+
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      sender_action: "typing_off"
+    };
+
+    callSendAPI(messageData);
+  },
+
+  /*
+   * Send a message with the account linking call-to-action
+   *
+   */
+  sendAccountLinking: function (recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "button",
+            text: "Welcome. Link your account.",
+            buttons:[{
+              type: "account_link",
+              url: SERVER_URL + "/authorize"
+            }]
+          }
+        }
+      }
+    };  
 
     callSendAPI(messageData);
   }
