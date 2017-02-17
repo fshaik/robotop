@@ -98,7 +98,7 @@ forecast.get(coor, function(err, weather) {
 
   sendTextMessage(me, message
   	.concat("Location: ", weather.timezone)
-  	.concat("\nDay: ", date.getDay())
+  	.concat("\nDay: ", date)
   	.concat("\nSummary: ", summary)
   	.concat("\nApparent Temperature: ", apparentTemperatureMin)
   	.concat("\nPrecipitation: ", precipProbability)

@@ -291,14 +291,6 @@ module.exports = function(app) {
             sendAccountLinking(senderID);
             break;
 
-          case 'hey':
-            sendHiSanam(senderID);
-          break;
-
-          case 'Hey':
-            sendHiSanam(senderID);
-          break;
-
           default:
             sendTextMessage(senderID, messageText);
         }

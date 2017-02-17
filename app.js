@@ -15,9 +15,7 @@ const
   config = require('config'),
   crypto = require('crypto'),
   express = require('express'),
-  https = require('https'),  
-  forecast = require('forecast'),
-  mysql = require('mysql'),
+  https = require('https'),
   mongoose = require('mongoose');
 
 /*
