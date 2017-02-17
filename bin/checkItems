@@ -3,6 +3,8 @@
 config = require('config')
 request = require('request');
 Forecast = require('forecast');
+controllers = require('../controllers/index');
+
 
 var nyc_coor = [40.741895,-73.989308];
 var sf_coor = [37.773972, -122.431297];
@@ -98,7 +100,7 @@ forecast.get(coor, function(err, weather) {
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-  sendTextMessage(me, message
+  controllers.sendMessage.sendTextMessage(me, message
   	.concat("Location: ", weather.timezone)
   	.concat("\nDay: ", days[date.getDay()])
   	.concat("\nSummary: ", summary)
