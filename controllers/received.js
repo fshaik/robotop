@@ -13,7 +13,7 @@
      * 
      */
     
-const sendMessage = require('./send')
+const send = require('./send')
 
 module.exports = { 
 
@@ -48,7 +48,7 @@ module.exports = {
       console.log("Quick reply for message %s with payload %s",
         messageId, quickReplyPayload);
 
-      sendMessage.sendTextMessage(senderID, "Quick reply tapped");
+      send.sendTextMessage(senderID, "Quick reply tapped");
       return;
     }
 
@@ -60,62 +60,62 @@ module.exports = {
       switch (messageText) {
 
         case 'image':
-          sendMessage.sendImageMessage(senderID);
+          send.sendImageMessage(senderID);
           break;
 
         case 'gif':
-          sendGifMessage(senderID);
+          send.sendGifMessage(senderID);
           break;
 
         case 'audio':
-          sendAudioMessage(senderID);
+          send.sendAudioMessage(senderID);
           break;
 
         case 'video':
-          sendVideoMessage(senderID);
+          send.sendVideoMessage(senderID);
           break;
 
         case 'file':
-          sendFileMessage(senderID);
+          send.sendFileMessage(senderID);
           break;
 
         case 'button':
-          sendButtonMessage(senderID);
+          send.sendButtonMessage(senderID);
           break;
 
         case 'generic':
-          sendGenericMessage(senderID);
+          send.sendGenericMessage(senderID);
           break;
 
         case 'receipt':
-          sendReceiptMessage(senderID);
+          send.sendReceiptMessage(senderID);
           break;
 
         case 'quick reply':
-          sendQuickReply(senderID);
+          send.sendQuickReply(senderID);
           break;        
 
         case 'read receipt':
-          sendReadReceipt(senderID);
+          send.sendReadReceipt(senderID);
           break;        
 
         case 'typing on':
-          sendTypingOn(senderID);
+          send.sendTypingOn(senderID);
           break;        
 
         case 'typing off':
-          sendTypingOff(senderID);
+          send.sendTypingOff(senderID);
           break;        
 
         case 'account linking':
-          sendAccountLinking(senderID);
+          send.sendAccountLinking(senderID);
           break;
 
         default:
-          sendMessage.sendTextMessage(senderID, messageText);
+          send.sendTextMessage(senderID, messageText);
       }
     } else if (messageAttachments) {
-      sendMessage.sendTextMessage(senderID, "Message with attachment received");
+      send.sendTextMessage(senderID, "Message with attachment received");
     }
 
   },
@@ -146,7 +146,7 @@ module.exports = {
 
     // When an authentication is received, we'll send a message back to the sender
     // to let them know it was successful.
-    sendMessage.sendTextMessage(senderID, "Authentication successful");
+    send.sendTextMessage(senderID, "Authentication successful");
   },
 
 
@@ -197,7 +197,7 @@ module.exports = {
 
     // When a postback is called, we'll send a message back to the sender to 
     // let them know it was successful
-    sendMessage.sendTextMessage(senderID, "Postback called");
+    send.sendTextMessage(senderID, "Postback called");
   },
 
   /*
