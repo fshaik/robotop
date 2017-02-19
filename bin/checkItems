@@ -53,7 +53,7 @@ forecast.get(coor, function(err, weather) {
 
 
   if (apparentTemperatureMin < 30) {
-  	sendWinterStyle(30);
+  	sendWinterStyle(20);
   	 
   }
 
