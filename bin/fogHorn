@@ -47,14 +47,14 @@ forecast.get(coor, function(err, weather) {
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-  controllers.saveDaysWeather(message
+  /*controllers.saveDaysWeather(message
   	.concat("Location: ", weather.timezone)
   	.concat("\nDay: ", days[date.getDay()])
   	.concat("\nSummary: ", summary)
   	.concat("\nApparent Temperature: ", averageTemperature)
   	.concat("\nPrecipitation: ", precipProbability)
    );
-
+*/
 
   if (averageTemperature < 30) {
   	sendWinterStyle(20);
