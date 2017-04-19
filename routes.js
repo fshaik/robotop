@@ -166,9 +166,6 @@ module.exports = function(app) {
 
   app.post('/api/weather', function (req, res) {
     var data = req.body;
-    console.log("API WEATHER" + data); 
-
-    /*console.log(req.body)
 
     db.collection('weather').save(req.body, (err, result) => {
     if (err) return console.log(err)
@@ -177,7 +174,6 @@ module.exports = function(app) {
     res.redirect('/')
     
     })
-    */
 
     res.sendStatus(200);
 
