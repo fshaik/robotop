@@ -32,37 +32,41 @@ var forecast = new Forecast({
 forecast.get(coor, function(err, weather) {
   if(err) return console.dir(err);
 
+  console.log(weather.daily)
+
   var today = weather.daily.data[0];
   var date = new Date(0);
   date.setUTCSeconds(today.time);
-
-  var apparentTemperatureMin = today.apparentTemperatureMin;
+  var tempMin = today.temperatureMin;
+  var tempMax = today.temperatureMax;
+ 
+  var averageTemperature = (tempMax+tempMin)/2 ;
   var precipProbability = today.precipProbability;
   var summary = today.icon;
   var message = "";
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-  controllers.send.sendTextMessage(me, message
+  controllers.saveDaysWeather(message
   	.concat("Location: ", weather.timezone)
   	.concat("\nDay: ", days[date.getDay()])
   	.concat("\nSummary: ", summary)
-  	.concat("\nApparent Temperature: ", apparentTemperatureMin)
+  	.concat("\nApparent Temperature: ", averageTemperature)
   	.concat("\nPrecipitation: ", precipProbability)
    );
 
 
-  if (apparentTemperatureMin < 30) {
+  if (averageTemperature < 30) {
   	sendWinterStyle(20);
   	 
   }
 
-  else if(apparentTemperatureMin < 40) {
+  else if(averageTemperature < 40) {
   	sendWinterStyle(30)
 
   }
 
-  else if (apparentTemperatureMin < 50) {
+  else if (averageTemperature < 50) {
   	sendWinterStyle(40)
 
 

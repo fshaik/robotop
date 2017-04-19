@@ -164,8 +164,18 @@ module.exports = function(app) {
 
     });
 
-  app.post('/quotes', (req, res) => {
-  console.log(req.body)
+  app.post('api/weather', (req, res) => {
+
+    console.log(req.body)
+    
+    db.collection('weather').save(req.body, (err, result) => {
+    if (err) return console.log(err)
+
+    console.log('saved to database')
+    res.redirect('/')
+    
+    })
+    
   })
 
 
