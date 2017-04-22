@@ -165,12 +165,14 @@ module.exports = function(app) {
 
   app.post('/api/weather', function (req, res) {
     var data = req.body;
+    var weather = new Weather(data);
 
-    Weather.save(req.body, (err, result) => {
-    if (err) return console.log(err)
+    weather.save(req.body, (err, result) => {
+      if (err) 
+        res.send(err);
 
-    console.log('saved to database')
-    res.redirect('/')
+      console.log('saved to database')
+      res.send(result)
     
     })
 
