@@ -167,16 +167,21 @@ module.exports = function(app) {
     var data = req.body;
     var weather = new Weather(data);
 
-    weather.save(req.body, (err, result) => {
-      if (err) 
+    console.log("Weather API recvied", data);
+
+    weather.save(function (err, result) {
+
+      if (err) {
+        console.log(err)
         res.send(err);
+        return err;
+      }
 
-      console.log('saved to database')
-      res.send(result)
+       console.log( result, ' saved to database');
+       res.send(result);
+
     
-    })
-
-    res.sendStatus(200);
+    });
 
   });
 
