@@ -45,6 +45,11 @@ const SERVER_URL = (process.env.SERVER_URL) ?
   (process.env.SERVER_URL) :
   config.get('serverURL');
 
+const DB_URL = (process.env.SERVER_URL) ?
+  (process.env.SERVER_URL) :
+  config.get('dbUrl');
+
+
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
   process.exit(1);

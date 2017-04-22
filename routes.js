@@ -39,6 +39,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 
 var Outfit = require('./models/Outfit');
 var request = require('request');
+var Weather = require('./models/Weather');
 
 module.exports = function(app) {
 
@@ -144,8 +145,6 @@ module.exports = function(app) {
 
         console.log("HIT THE URL /printallurls")
 
-
-
         Outfit.find({ sunglasses: true }).sort({ temperature: 1}).exec(function (err, docs) {
 
             if(err) throw err;
@@ -167,7 +166,7 @@ module.exports = function(app) {
   app.post('/api/weather', function (req, res) {
     var data = req.body;
 
-    db.collection('weather').save(req.body, (err, result) => {
+    Weather.save(req.body, (err, result) => {
     if (err) return console.log(err)
 
     console.log('saved to database')

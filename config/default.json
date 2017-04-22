@@ -2,5 +2,7 @@
     "appSecret": "619f60389c8e8beb336aa0d956fdaf53",
     "pageAccessToken": "EAAPTVeCCGgsBAP78kFdx7tnZBJJEHFldfgys3MnuCGicISn2s6PCpIbXI1uZAaGylqx8Fw9EZBBhKEhScUZCLRS1j22TxlLJOBhkFp6Ouiyjq9lSjBZBFhmzunKNjeasglaZCDZBotZCc1f9arLYZBjpbEeeYUGqz0SeEim0nLhDCZAQZDZD",
     "validationToken": "password",
-    "serverURL": "https://robotopapp.herokuapp.com/"
+    "serverURL": "https://robotopapp.herokuapp.com/",
+    "dbUrl": "mongodb://heroku_tnlh9d9h:1dfism89bbluj1bne99g3ke7k7@ds151059.mlab.com:51059/heroku_tnlh9d9h"
+
 }

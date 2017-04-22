@@ -36,7 +36,7 @@ var forecast = new Forecast({
 forecast.get(coor, function(err, weather) {
   if(err) return console.dir(err);
 
-  console.log(weather.daily)
+  
 
 
 
@@ -62,6 +62,8 @@ forecast.get(coor, function(err, weather) {
           }
       }
   );
+
+console.log(today)
 
   /*controllers.saveDaysWeather(message
   	.concat("Location: ", weather.timezone)
