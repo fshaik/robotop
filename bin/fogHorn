@@ -54,7 +54,7 @@ forecast.get(coor, function(err, weather) {
   var message = "";
   var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  console.log("Foghorn Sending", today);  
+  //console.log("Foghorn Sending", today);  
 
   //Post to save weather API
 
