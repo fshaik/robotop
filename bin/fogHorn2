@@ -47,7 +47,18 @@ var promise = new Promise((resolve, reject) => {
       body: today
    });
 
-   controllers.weather.getYesterdayWeather(today.time);
+   controllers.weather.getYesterdayWeather(today.time).then((yesterdaysWeather) => {
+
+   	console.log("Yesterdays Weather", yesterdaysWeather)
+	if(controllers.weather.compareWeathers (yesterdaysWeather, today)) {
+		controllers.send.sendTextMessage(me, "Weather is Different today")
+	}
+	else {
+		controllers.send.sendTextMessage(me, "Weather is pretty much the same as Yesterday")
+
+	}
+
+   });
 
 
 
