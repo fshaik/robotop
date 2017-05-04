@@ -47,7 +47,9 @@ var promise = new Promise((resolve, reject) => {
       body: today
    });
 
-  console.log(today.time);
+   controllers.weather.getYesterdayWeather(today.time);
+
+
 
 
 }).catch(
