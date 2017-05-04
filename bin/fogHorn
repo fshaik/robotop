@@ -56,7 +56,7 @@ forecast.get(coor, function(err, weather) {
 
   //console.log("Foghorn Sending", today);  
 
-  //Post to save weather API
+  //Save weather in DB
 
   request({
       url: SERVER_URL + 'api/weather',
@@ -68,6 +68,12 @@ forecast.get(coor, function(err, weather) {
       body: today
     });
 
+//Check if the weather has changed
+
+
+
+
+//Send Reply based on weather
   if (averageTemperature < 30) {
   	sendWinterStyle(20);
   	 

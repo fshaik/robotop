@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+
+config = require('config')
+request = require('request');
+Forecast = require('forecast');
+controllers = require('../controllers/index');
+
+
+const local="http://localhost:5000/";
+
+
+var nyc_coor = [40.741895,-73.989308];
+var sf_coor = [37.773972, -122.431297];
+var me = 1223764231070887;
+
+const coor = nyc_coor;
+
+const winterS3Bucket = "https://s3-us-west-2.amazonaws.com/winter-styles-20";
+
+const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
+  (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
+  config.get('pageAccessToken');
+
+const SERVER_URL = (process.env.SERVER_URL) ?
+  (process.env.SERVER_URL) :
+  config.get('serverURL');
+
+
+var promise = new Promise((resolve, reject) => {
+
+  // Check Weather for Today
+  controllers.weather.checkWeather(resolve, coor);
+
+
+}).then((today) => {
+
+  console.log("Yay! " );
+
+  //save weather in DB
+  request({
+      url: SERVER_URL + 'api/weather',
+      method: "POST",
+      json: true,
+      headers: {
+          "content-type": "application/json",
+      },
+      body: today
+   });
+
+  console.log(today.time);
+
+
+}).catch(
+	(reason) => {
+		console.log("Fuck", reason)
+	}
+);
+
+//Decide Wheather message user
+
+//get yesterdays weather
+
+// compare with today
+
+//if differrent send
+
+
+
+
+//var today =  controllers.weather.checkAndSaveWeather(coor);
+
+
+//controllers.send.sendTextMessage(me, "It's Warm dude! update me")
+
+
