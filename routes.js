@@ -185,7 +185,25 @@ module.exports = function(app) {
 
   });
 
+  app.get('/api/weather', function (req, res) {
 
+    //Decides if weather should send
 
+    var [y,t] = req.body;
+    
+    console.log(y,t)
+
+     Weather.findOne().where("time").gte(y).lte(t).exec(function (err, weather) {
+
+       if(err) throw err;
+
+       console.log(weather.time, weather.summary);
+
+        res.json(weather);
+    //     // Since this is an example, we'll clean up after ourselves.
+
+     });
+
+  });
 
 };
